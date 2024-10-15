@@ -15,3 +15,16 @@ An example of text with **bold** and *italic* fonts.
 * Someone who wants to get an estimate value of a steam account will use it.
 
 * The project is very helpful and I wish to design one because I'd like to make the steam trading market more transparent.
+
+## User stories
+* As a user, I want to be able to add a game to my steam library, and specify the name, the original sell price, and the percentage of unlocked achievements
+
+* As a user, I want to be able to view the list of games in my steam library
+
+* As a user, I want to be able to mark a game as played in my steam library
+
+* As a user, I want to be able to see how popular a game is
+
+* As a user, I want to be able to remove a game from my steam library
+
+
