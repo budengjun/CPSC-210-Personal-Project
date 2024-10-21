@@ -6,7 +6,6 @@ import model.Game;
 
 import model.Library;
 
-import java.util.Scanner;
 
 public class SteamApp {
     private Game gameA;
@@ -66,6 +65,10 @@ public class SteamApp {
             doEstimate();
         }
         
+        else if (command.equals("s")) {
+            doSee();
+        }
+
         else {
             System.out.println("Selection not valid...");
         }
@@ -88,6 +91,7 @@ public class SteamApp {
         System.out.println("\ta -> add game");
         System.out.println("\tr -> remove game");
         System.out.println("\tp -> play");
+        System.out.println("\ts -> see games in your gamelist");
         System.out.println("\tv -> view popular index");
         System.out.println("\te -> estimate");
         System.out.println("\tq -> quit");
@@ -104,10 +108,10 @@ public class SteamApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: conducts to play
+    // EFFECTS: conducts to play 10 times
     private void doPlay() {
         Game selected = selectGame();
-        library.playGames(selected, 1);
+        library.playGames(selected, 10);
         
         
     }
@@ -121,6 +125,9 @@ public class SteamApp {
 
     }
 
+    private void doSee() {
+        System.out.println(library.getNameGameList());
+    }
     // MODIFIES: this
     // EFFECTS: conducts to estimate the value of steam account
     private void doEstimate() {
@@ -130,7 +137,7 @@ public class SteamApp {
             double p = game.getPrice();
             int u = game.getNumUnlockedAchievements();
             int a = game.getNumAchievements();
-            double ua = Math.min(1, u / a + 1);
+            double ua = Math.min(1.5, u / a + 1);
             double sellPriceForOneGame = c / 100 * p * ua;
             sellPrice = sellPrice + sellPriceForOneGame;
         }

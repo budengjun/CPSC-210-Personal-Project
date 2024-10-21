@@ -32,6 +32,14 @@ public class Library {
         return gameList;
     }
 
+    public List<String> getNameGameList() {
+        List<String> list = new ArrayList<>();
+        for (Game game : gameList) {
+            list.add(game.getName());
+        }
+        return list;
+    }
+
     //MODIFIES: this
     //EFFECTS: play a given game and mark it as played, 
     //at the same time increase number of unlocked achievements by n times
