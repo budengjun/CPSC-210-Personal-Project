@@ -16,8 +16,8 @@ class TestLibrary {
 
     @BeforeEach
     void runBefore() {
-    gameA = new Game("Baldur's Gate 3", 60, 54);
-    gameB = new Game("Grand Theft Auto V", 39.9, 77);
+    gameA = new Game("Baldur's Gate 3", 60, 54, 80.1);
+    gameB = new Game("Grand Theft Auto V", 39.9, 77, 61.2);
     testLibrary = new Library();
 }
 

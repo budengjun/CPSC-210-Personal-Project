@@ -12,7 +12,7 @@ class TestGame {
 
     @BeforeEach
     void runBefore() {
-        gameA = new Game("Baldur's Gate 3", 60, 54);
+        gameA = new Game("Baldur's Gate 3", 60, 54, 80.1);
     }
 
     @Test
@@ -22,6 +22,7 @@ class TestGame {
         assertEquals(54, gameA.getNumAchievements());
         assertEquals(0, gameA.getNumUnlockedAchievements());
         assertFalse(gameA.getPlayingStatus());
+        assertEquals(80.1, gameA.getPopularIndex());
     }
 
     @Test
@@ -38,6 +39,7 @@ class TestGame {
 
     @Test
     void testPlayGame() {
+        assertEquals(0, gameA.getNumUnlockedAchievements());
         gameA.playGame(5);
         assertEquals(5, gameA.getNumUnlockedAchievements());
         gameA.playGame(49);

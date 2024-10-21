@@ -1,20 +1,22 @@
 package model;
 
-    //represent a Game and its variables
+    //represent a game and its variables
 public class Game {
     private String name;
     private double price;
     private final int numAchievements;
     private int numUnlockedAchievements;
     private boolean playingStatus;
+    private double popularIndex;
 
-    //EFFECTS: build a constructor for Game, with the given name, price and numAchievements
-    public Game(String name, double price, int numAchievements) {
+    //EFFECTS: build a constructor for game, with the given name, price, number of achievements and popular index
+    public Game(String name, double price, int numAchievements, double popularIndex) {
         this.name = name;
         this.price = price;
         this.numAchievements = numAchievements;
         this.numUnlockedAchievements = 0;
         this.playingStatus = false;
+        this.popularIndex = popularIndex;
     }
 
     //EFFECTS: return name
@@ -30,6 +32,11 @@ public class Game {
     //EFFECTS: return number of achievements
     public int getNumAchievements() {
         return numAchievements;
+
+    }
+
+    public double getPopularIndex() {
+        return popularIndex;
 
     }
 

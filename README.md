@@ -29,4 +29,6 @@ An example of text with **bold** and *italic* fonts.
 
 * As a user, I want to be able to remove a game from my steam library
 
+* As a user, I want to be able to see how much can my steam account value
+
 
