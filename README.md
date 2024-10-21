@@ -31,4 +31,8 @@ An example of text with **bold** and *italic* fonts.
 
 * As a user, I want to be able to see how much can my steam account value
 
+* As a user, I want to be able to save my gamelist to file
+
+* As a user, I want to be able to load my gamelist from file
+
 

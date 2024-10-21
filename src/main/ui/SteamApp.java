@@ -47,29 +47,17 @@ public class SteamApp {
     private void processCommand(String command) {
         if (command.equals("p")) {
             doPlay();
-        }
-
-        else if (command.equals("a")) {
+        } else if (command.equals("a")) {
             doAdd();
-        }
-
-        else if (command.equals("r")) {
+        } else if (command.equals("r")) {
             doRemove();
-        }
-
-        else if (command.equals("v")) {
+        } else if (command.equals("v")) {
             doView();
-        }
-
-        else if (command.equals("e")) {
+        } else if (command.equals("e")) {
             doEstimate();
-        }
-        
-        else if (command.equals("s")) {
+        } else if (command.equals("s")) {
             doSee();
-        }
-
-        else {
+        } else {
             System.out.println("Selection not valid...");
         }
     }
@@ -90,10 +78,10 @@ public class SteamApp {
         System.out.println("\nSelect from:");
         System.out.println("\ta -> add game");
         System.out.println("\tr -> remove game");
-        System.out.println("\tp -> play");
+        System.out.println("\tp -> play game");
         System.out.println("\ts -> see games in your gamelist");
         System.out.println("\tv -> view popular index");
-        System.out.println("\te -> estimate");
+        System.out.println("\te -> estimate value of your steam account");
         System.out.println("\tq -> quit");
     }
 
@@ -128,8 +116,10 @@ public class SteamApp {
     private void doSee() {
         System.out.println(library.getNameGameList());
     }
+
     // MODIFIES: this
     // EFFECTS: conducts to estimate the value of steam account
+
     private void doEstimate() {
         double sellPrice = 0;
         for (Game game : library.getGameList()) {
@@ -141,7 +131,7 @@ public class SteamApp {
             double sellPriceForOneGame = c / 100 * p * ua;
             sellPrice = sellPrice + sellPriceForOneGame;
         }
-         System.out.println(sellPrice);
+        System.out.println(sellPrice);
     }
 
     // EFFECTS: prompts user to select a game and returns it
@@ -158,13 +148,9 @@ public class SteamApp {
 
         if (selection.equals("b")) {
             return gameA;
-        }
-        
-        else if (selection.equals("g")) {
+        } else if (selection.equals("g")) {
             return gameB;
-        }
-
-        else {
+        } else {
             return gameC;
         }
     }
