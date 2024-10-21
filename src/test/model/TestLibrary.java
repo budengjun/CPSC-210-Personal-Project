@@ -5,14 +5,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 class TestLibrary {
     private Game gameA;
     private Game gameB;
     private Library testLibrary;
-    private List<Game> gameList;
 
 
 
@@ -21,19 +19,18 @@ class TestLibrary {
     gameA = new Game("Baldur's Gate 3", 60, 54);
     gameB = new Game("Grand Theft Auto V", 39.9, 77);
     testLibrary = new Library();
-    gameList = new ArrayList<>();
 }
 
 @Test
 void testAddGame() {
-    assertEquals(0, gameList.size());
+    assertEquals(0, testLibrary.getGameList().size());
     testLibrary.addGame(gameA);
-    assertEquals(1, gameList.size());
-    assertEquals(gameA, gameList.get(0));
+    assertEquals(1, testLibrary.getGameList().size());
+    assertEquals(gameA, testLibrary.getGameList().get(0));
     testLibrary.addGame(gameB);
-    assertEquals(2, gameList.size());
-    assertEquals(gameA, gameList.get(0));
-    assertEquals(gameB, gameList.get(1));
+    assertEquals(2, testLibrary.getGameList().size());
+    assertEquals(gameA, testLibrary.getGameList().get(0));
+    assertEquals(gameB, testLibrary.getGameList().get(1));
 }
 
 
@@ -41,12 +38,12 @@ void testAddGame() {
 void testRemoveGame() {
     testLibrary.addGame(gameA);
     testLibrary.addGame(gameB);
-    assertEquals(2, gameList.size());
+    assertEquals(2, testLibrary.getGameList().size());
     testLibrary.removeGame(gameA);
-    assertEquals(1, gameList.size());
-    assertEquals(gameB, gameList.get(0));
+    assertEquals(1, testLibrary.getGameList().size());
+    assertEquals(gameB, testLibrary.getGameList().get(0));
     testLibrary.removeGame(gameB);
-    assertEquals(0, gameList.size());
+    assertEquals(0, testLibrary.getGameList().size());
 }
 
 @Test
