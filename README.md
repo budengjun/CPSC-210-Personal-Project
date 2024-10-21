@@ -23,6 +23,8 @@ An example of text with **bold** and *italic* fonts.
 
 * As a user, I want to be able to mark a game as played in my steam library
 
+* As a user, I want to be able to mark a game as not played in my steam library
+
 * As a user, I want to be able to see how popular a game is
 
 * As a user, I want to be able to remove a game from my steam library
