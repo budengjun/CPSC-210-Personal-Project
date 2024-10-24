@@ -1,6 +1,12 @@
 package ui;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
+
+import persistence.JsonReader;
+import persistence.JsonWriter;
+
 
 import model.Game;
 
@@ -16,9 +22,14 @@ public class SteamApp {
     private Game gameF;
     private Library library;
     private Scanner input;
+    private static final String JSON_STORE = "./data/library.json";
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // EFFECTS: runs the teller application
-    public SteamApp() {
+    public SteamApp() throws FileNotFoundException {
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runSteam();
     }
 
@@ -60,6 +71,10 @@ public class SteamApp {
             doEstimate();
         } else if (command.equals("s")) {
             doSee();
+        } else if (command.equals("sa")) {
+            saveLibrary();
+        } else if (command.equals("l")) {
+            loadLibrary();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -88,6 +103,8 @@ public class SteamApp {
         System.out.println("\ts -> see games in your gamelist");
         System.out.println("\tv -> view popular index");
         System.out.println("\te -> estimate value of your steam account");
+        System.out.println("\tsa -> save library to file");
+        System.out.println("\tl -> load library from file");
         System.out.println("\tq -> quit");
     }
 
@@ -177,6 +194,29 @@ public class SteamApp {
             return gameE;
         } else {
             return gameF;
+        }
+    }
+
+    // EFFECTS: saves the library to file
+    private void saveLibrary() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(library);
+            jsonWriter.close();
+            System.out.println("Saved " + "library" + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads library from file
+    private void loadLibrary() {
+        try {
+            library = jsonReader.read();
+            System.out.println("Loaded " + "library" + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 }

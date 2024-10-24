@@ -2,10 +2,16 @@ package model;
 
 import java.util.List;
 
+import persistence.Writable;
+
+import org.json.JSONArray;
+
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 // a library would have a gamelist inside
-public class Library {
+public class Library implements Writable{
     private List<Game> gameList;
 
 
@@ -46,5 +52,23 @@ public class Library {
     public void playGames(Game game, int n) {
         game.markAsPlayed();
         game.playGame(n);
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("games", gamesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray gamesToJson() {
+        JSONArray jsonArray = new JSONArray();
+    
+        for (Game g : gameList) {
+            jsonArray.put(g.toJson());
+        }
+    
+        return jsonArray;
     }
 }

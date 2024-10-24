@@ -1,7 +1,11 @@
 package model;
 
-    //represent a game and its variables
-public class Game {
+import org.json.JSONObject;
+
+import persistence.Writable;
+
+//represent a game and its variables
+public class Game implements Writable {
     private String name;
     private double price;
     private final int numAchievements;
@@ -74,4 +78,13 @@ public class Game {
         }
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("price", price);
+        json.put("number of achievements", numAchievements);
+        json.put("popular index", popularIndex);
+        return json;
+    }
 }
