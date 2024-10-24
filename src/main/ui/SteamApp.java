@@ -11,6 +11,9 @@ public class SteamApp {
     private Game gameA;
     private Game gameB;
     private Game gameC;
+    private Game gameD;
+    private Game gameE;
+    private Game gameF;
     private Library library;
     private Scanner input;
 
@@ -66,8 +69,11 @@ public class SteamApp {
     // EFFECTS: initializes steam account
     private void init() {
         gameA = new Game("Baldur's Gate 3", 60, 54, 80.1);
-        gameB = new Game("Grand Theft Auto V", 39.9, 77, 61.2);
-        gameC = new Game("Dead By Daylight", 18.8, 264, 57.5);
+        gameB = new Game("Grand Theft Auto V", 39.99, 77, 61.2);
+        gameC = new Game("Dead By Daylight", 18.89, 264, 57.5);
+        gameD = new Game("Cyberpunk 2077", 75, 57, 48.4);
+        gameE = new Game("Red Dead Redemption 2", 79.99, 51, 83.3);
+        gameF = new Game("Sekiro: Shadows Die Twice", 59.99, 34, 20.6);
         library = new Library();
         input = new Scanner(System.in);
         input.useDelimiter("\r?\n|\r");
@@ -87,12 +93,16 @@ public class SteamApp {
 
     private void doAdd() {
         Game selected = selectGame();
-        library.addGame(selected);
+        if (!library.getGameList().contains(selected)) {
+            library.addGame(selected);
+        }
     }
 
     private void doRemove() {
         Game selected = selectGame();
-        library.removeGame(selected);
+        if (library.getGameList().contains(selected)) {
+            library.removeGame(selected);
+        }
     }
 
     // MODIFIES: this
@@ -125,10 +135,16 @@ public class SteamApp {
         for (Game game : library.getGameList()) {
             double c = game.getPopularIndex();
             double p = game.getPrice();
+            if (p == 0) {
+                p = 50;
+            }
             int u = game.getNumUnlockedAchievements();
             int a = game.getNumAchievements();
-            double ua = Math.min(1.5, u / a + 1);
-            double sellPriceForOneGame = c / 100 * p * ua;
+            double ua = u / a;
+            if (u == 0) {
+                ua = 0.5;
+            }
+            double sellPriceForOneGame = c / 100 * ua + p;
             sellPrice = sellPrice + sellPriceForOneGame;
         }
         System.out.println(sellPrice);
@@ -138,10 +154,13 @@ public class SteamApp {
     private Game selectGame() {
         String selection = "";  // force entry into loop
 
-        while (!(selection.equals("b") || selection.equals("g") || selection.equals("d"))) {
+        while (!(selection.equals("b") || selection.equals("g") || selection.equals("d") || selection.equals("c") || selection.equals("r") || selection.equals("s"))) {
             System.out.println("b for Baldur's Gate 3");
             System.out.println("g for Grand Theft Auto V");
             System.out.println("d for Dead By Daylight");
+            System.out.println("c for Cyberpunk 2077");
+            System.out.println("r for Red Dead Redemption 2");
+            System.out.println("s for Sekiro: Shadows Die Twice");
             selection = input.next();
             selection = selection.toLowerCase();
         }
@@ -150,8 +169,14 @@ public class SteamApp {
             return gameA;
         } else if (selection.equals("g")) {
             return gameB;
-        } else {
+        } else if (selection.equals("d")) {
             return gameC;
+        } else if (selection.equals("c")) {
+            return gameD;
+        } else if (selection.equals("r")) {
+            return gameE;
+        } else {
+            return gameF;
         }
     }
 }
