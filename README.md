@@ -31,8 +31,6 @@ An example of text with **bold** and *italic* fonts.
 
 * As a user, I want to be able to see how much can my steam account value
 
-* As a user, I want to be able to save my gamelist to file
+* As a user, when I select the quit option from the application menu, I want to be reminded to save my gamelist to file and have the option to do so or not
 
-* As a user, I want to be able to load my gamelist from file
-
-
+* As a user, when I start the application, I want to be given the option to load my gamelist from file
