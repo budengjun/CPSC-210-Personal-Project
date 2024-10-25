@@ -71,9 +71,7 @@ public class Game implements Writable {
     public void playGame(int n) {
         if (numUnlockedAchievements + n < numAchievements) {
             numUnlockedAchievements = numUnlockedAchievements + n;
-        }
-
-        else if (numUnlockedAchievements + n >= numAchievements) {
+        } else if (numUnlockedAchievements + n >= numAchievements) {
             numUnlockedAchievements = numAchievements;
         }
     }

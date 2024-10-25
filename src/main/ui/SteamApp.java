@@ -170,18 +170,16 @@ public class SteamApp {
     // EFFECTS: prompts user to select a game and returns it
     private Game selectGame() {
         String selection = "";  // force entry into loop
-
-        while (!(selection.equals("b") || selection.equals("g") || selection.equals("d") || selection.equals("c") || selection.equals("r") || selection.equals("s"))) {
+        while (!(selection.equals("b") || selection.equals("g") || selection.equals("d")
+            || selection.equals("c") || selection.equals("r") || selection.equals("s"))) {
             System.out.println("b for Baldur's Gate 3");
             System.out.println("g for Grand Theft Auto V");
             System.out.println("d for Dead By Daylight");
             System.out.println("c for Cyberpunk 2077");
             System.out.println("r for Red Dead Redemption 2");
-            System.out.println("s for Sekiro: Shadows Die Twice");
             selection = input.next();
             selection = selection.toLowerCase();
         }
-
         if (selection.equals("b")) {
             return gameA;
         } else if (selection.equals("g")) {
@@ -190,10 +188,8 @@ public class SteamApp {
             return gameC;
         } else if (selection.equals("c")) {
             return gameD;
-        } else if (selection.equals("r")) {
-            return gameE;
         } else {
-            return gameF;
+            return gameE;
         }
     }
 

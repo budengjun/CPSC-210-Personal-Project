@@ -11,7 +11,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 // a library would have a gamelist inside
-public class Library implements Writable{
+public class Library implements Writable {
     private List<Game> gameList;
 
 
