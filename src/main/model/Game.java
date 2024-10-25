@@ -83,8 +83,8 @@ public class Game implements Writable {
         JSONObject json = new JSONObject();
         json.put("name", name);
         json.put("price", price);
-        json.put("number of achievements", numAchievements);
-        json.put("popular index", popularIndex);
+        json.put("numAchievements", numAchievements);
+        json.put("popularIndex", popularIndex);
         return json;
     }
 }

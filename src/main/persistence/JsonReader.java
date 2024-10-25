@@ -39,30 +39,30 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
-    // EFFECTS: parses workroom from JSON object and returns it
+    // EFFECTS: parses library from JSON object and returns it
     private Library parseLibrary(JSONObject jsonObject) {
         Library li = new Library();
         addGames(li, jsonObject);
         return li;
     }
 
-    // MODIFIES: wr
+    // MODIFIES: li
     // EFFECTS: parses games from JSON object and adds them to library
     private void addGames(Library li, JSONObject jsonObject) {
-        JSONArray jsonArray = jsonObject.getJSONArray("thingies");
+        JSONArray jsonArray = jsonObject.getJSONArray("gameList");
         for (Object json : jsonArray) {
             JSONObject nextGame = (JSONObject) json;
             addGame(li, nextGame);
         }
     }
 
-    // MODIFIES: wr
-    // EFFECTS: parses thingy from JSON object and adds it to workroom
+    // MODIFIES: li
+    // EFFECTS: parses game from JSON object and adds it to gamelist
     private void addGame(Library li, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
-        double price = jsonObject.getDouble("name");
-        int numAchievements = jsonObject.getInt("name");
-        double popularIndex = jsonObject.getDouble("name");
+        double price = jsonObject.getDouble("price");
+        int numAchievements = jsonObject.getInt("numAchievements");
+        double popularIndex = jsonObject.getDouble("popularIndex");
         Game game = new Game(name, price, numAchievements, popularIndex);
         li.addGame(game);
     }

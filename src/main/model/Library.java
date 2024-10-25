@@ -57,11 +57,11 @@ public class Library implements Writable{
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("games", gamesToJson());
+        json.put("gameList", gamesToJson());
         return json;
     }
 
-    // EFFECTS: returns things in this workroom as a JSON array
+    // EFFECTS: returns things in this library as a JSON array
     private JSONArray gamesToJson() {
         JSONArray jsonArray = new JSONArray();
     

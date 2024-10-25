@@ -1,0 +1,38 @@
+{"games": [
+    {
+        "price": 60,
+        "name": "Baldur's Gate 3",
+        "number of achievements": 54,
+        "popular index": 80.1
+    },
+    {
+        "price": 39.99,
+        "name": "Grand Theft Auto V",
+        "number of achievements": 77,
+        "popular index": 61.2
+    },
+    {
+        "price": 18.89,
+        "name": "Dead By Daylight",
+        "number of achievements": 264,
+        "popular index": 57.5
+    },
+    {
+        "price": 75,
+        "name": "Cyberpunk 2077",
+        "number of achievements": 57,
+        "popular index": 48.4
+    },
+    {
+        "price": 79.99,
+        "name": "Red Dead Redemption 2",
+        "number of achievements": 51,
+        "popular index": 83.3
+    },
+    {
+        "price": 59.99,
+        "name": "Sekiro: Shadows Die Twice",
+        "number of achievements": 34,
+        "popular index": 20.6
+    }
+]}

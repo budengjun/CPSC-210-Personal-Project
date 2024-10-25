@@ -1,0 +1,14 @@
+{"gameList": [
+    {
+        "price": 60,
+        "name": "Baldur's Gate 3",
+        "numAchievements": 54,
+        "popularIndex": 80.1
+    },
+    {
+        "price": 39.9,
+        "name": "Grand Theft Auto V",
+        "numAchievements": 77,
+        "popularIndex": 61.2
+    }
+]}
