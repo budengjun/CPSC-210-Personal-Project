@@ -19,7 +19,6 @@ public class SteamApp {
     private Game gameC;
     private Game gameD;
     private Game gameE;
-    private Game gameF;
     private Library library;
     private Scanner input;
     private static final String JSON_STORE = "./data/library.json";
@@ -88,7 +87,6 @@ public class SteamApp {
         gameC = new Game("Dead By Daylight", 18.89, 264, 57.5);
         gameD = new Game("Cyberpunk 2077", 75, 57, 48.4);
         gameE = new Game("Red Dead Redemption 2", 79.99, 51, 83.3);
-        gameF = new Game("Sekiro: Shadows Die Twice", 59.99, 34, 20.6);
         library = new Library();
         input = new Scanner(System.in);
         input.useDelimiter("\r?\n|\r");

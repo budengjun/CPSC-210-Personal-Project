@@ -28,7 +28,7 @@ class JsonReaderTest extends JsonTest {
         JsonReader reader = new JsonReader("./data/testReaderEmptyLibrary.json");
         try {
             Library li = reader.read();
-            assertEquals(0, li.getGameList());
+            assertEquals(0, li.getGameList().size());
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
@@ -36,7 +36,7 @@ class JsonReaderTest extends JsonTest {
 
     @Test
     void testReaderGeneralWorkRoom() {
-        JsonReader reader = new JsonReader("./data/testReaderGeneralWorkRoom.json");
+        JsonReader reader = new JsonReader("./data/testReaderGeneralLibrary.json");
         try {
             Library li = reader.read();
             List<Game> games = li.getGameList();
