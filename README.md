@@ -21,7 +21,7 @@ An example of text with **bold** and *italic* fonts.
 
 * As a user, I want to be able to view the list of games in my steam library
 
-* As a user, I want to be able to mark a game as played in my steam library
+* As a user, I want to be able to mark a game as played in my steam library and play game
 
 * As a user, I want to be able to mark a game as not played in my steam library
 
@@ -29,7 +29,7 @@ An example of text with **bold** and *italic* fonts.
 
 * As a user, I want to be able to remove a game from my steam library
 
-* As a user, I want to be able to see how much can my steam account value
+* As a user, I want to be able to see how much is my steam account
 
 * As a user, when I select the quit option from the application menu, I want to be reminded to save my gamelist to file and have the option to do so or not
 
