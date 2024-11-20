@@ -51,7 +51,7 @@ public class SteamApp {
                 processCommand(command);
             }
         }
-
+        
         System.out.println("\nGoodbye!");
     }
 
