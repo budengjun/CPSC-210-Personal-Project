@@ -7,10 +7,11 @@ import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+
+import java.util.List;
 
 public class SteamAppGUI extends JFrame {
     private Library library;
@@ -18,6 +19,7 @@ public class SteamAppGUI extends JFrame {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private JTextArea gameListDisplay;
+    private List<String> gamesName;
     
     // Constructor to set up the GUI
     public SteamAppGUI() {
@@ -45,16 +47,16 @@ public class SteamAppGUI extends JFrame {
     // Centres frame on desktop
 	// modifies: this
 	// effects:  location of frame is set so frame is centred on desktop
-	private void centreOnScreen() {
-		Dimension scrn = Toolkit.getDefaultToolkit().getScreenSize();
-		setLocation((scrn.width - getWidth()) / 2, (scrn.height - getHeight()) / 2);
-	}
+    private void centreOnScreen() {
+        Dimension scrn = Toolkit.getDefaultToolkit().getScreenSize();
+        setLocation((scrn.width - getWidth()) / 2, (scrn.height - getHeight()) / 2);
+    }
     
     // Creates the control panel with buttons
     private void createControlPanel() {
         JPanel controlPanel = new JPanel();
         controlPanel.setLayout(new GridLayout(2, 4));
-
+        
         // Add Game Button
         JButton addGameButton = new JButton("Add Game");
         addGameButton.addActionListener(e -> addGameDialog());
@@ -62,7 +64,7 @@ public class SteamAppGUI extends JFrame {
 
         // View Games Button
         JButton viewGamesButton = new JButton("View Library");
-        viewGamesButton.addActionListener(e -> updateGameListDisplay());
+        viewGamesButton.addActionListener(e -> viewGameListDisplay());
         controlPanel.add(viewGamesButton);
 
         // Play Game Button
@@ -111,30 +113,41 @@ public class SteamAppGUI extends JFrame {
         JTextField nameField = new JTextField();
         JTextField priceField = new JTextField();
         JTextField achievementsField = new JTextField();
+        JTextField popularIndexField = new JTextField();
         Object[] message = {
             "Game Name:", nameField,
             "Price:", priceField,
-            "Percentage Unlocked Achievements:", achievementsField,
+            "Achievements:", achievementsField,
+            "Popular index", popularIndexField,
         };
         int option = JOptionPane.showConfirmDialog(this, message, "Add Game", JOptionPane.OK_CANCEL_OPTION);
         if (option == JOptionPane.OK_OPTION) {
             String name = nameField.getText();
             double price = Double.parseDouble(priceField.getText());
             int achievements = Integer.parseInt(achievementsField.getText());
-            library.addGame(new Game(name, price, achievements, 0));
+            double popularIndex = Double.parseDouble(popularIndexField.getText());
+            library.addGame(new Game(name, price, achievements, popularIndex));
             updateGameListDisplay();
         }
     }
 
     // Plays a game through a dialog
     private void playGameDialog() {
+        JTextField selectTimesField = new JTextField();
         String gameName = selectGame();
-        if (gameName != null) {
-            for (Game game : library.getGameList()) {
-                if (game.getName().equalsIgnoreCase(gameName)) {
-                    library.playGames(game, 10);
-                    JOptionPane.showMessageDialog(this, "Played 10 times: " + gameName);
-                    break;
+        Object[] message = {
+            "How many times you want to play?", selectTimesField,
+        };
+        int option = JOptionPane.showConfirmDialog(this, message, "Play Game", JOptionPane.OK_CANCEL_OPTION);
+        if (option == JOptionPane.OK_OPTION) {
+            if (gameName != null) {
+                int timesToPlay = Integer.parseInt(selectTimesField.getText());
+                for (Game game : library.getGameList()) {
+                    if (game.getName().equalsIgnoreCase(gameName)) {
+                        library.playGames(game, timesToPlay);
+                        game.markAsPlayed();
+                        JOptionPane.showMessageDialog(this, "You played " + timesToPlay + " times: " + gameName);
+                    }
                 }
             }
         }
@@ -149,7 +162,6 @@ public class SteamAppGUI extends JFrame {
                     library.removeGame(game);
                     JOptionPane.showMessageDialog(this, "Removed: " + gameName);
                     updateGameListDisplay();
-                    break;
                 }
             }
         }
@@ -166,7 +178,10 @@ public class SteamAppGUI extends JFrame {
             }
             int u = game.getNumUnlockedAchievements();
             int a = game.getNumAchievements();
-            double ua = (a > 0) ? (double) u / a : 0.5;
+            double ua = u / a;
+            if (u == 0) {
+                ua = 0.5;
+            }
             sellPrice += (c / 100 * ua) + p;
         }
         JOptionPane.showMessageDialog(this, "Steam Account Value: $" + sellPrice);
@@ -178,7 +193,47 @@ public class SteamAppGUI extends JFrame {
         for (Game game : library.getGameList()) {
             gameListDisplay.append(game.getName() + " - $" + game.getPrice() + "\n");
         }
+
     }
+
+    // Views the game list
+    private void viewGameListDisplay() {
+        gamesName = new ArrayList<>();
+        for (Game game : library.getGameList()) {
+            gamesName.add(game.getName());
+        }
+        JOptionPane.showMessageDialog(this, gamesName);
+
+        // JPanel gameListPanel = new JPanel();
+        // gameListPanel.setLayout(new FlowLayout());
+        // for (Game game : library.getGameList()) {
+        //     JButton button1 = new JButton(game.getName());
+        //     button1.addActionListener(e -> displayGame(game));
+        //     gameListPanel.add(button1);
+        // }
+        // add(gameListPanel, BorderLayout.NORTH);
+        Object[] gameNames = library.getNameGameList().toArray();
+        String gameName = (String) JOptionPane.showInputDialog(this, "Select a game:", "View Game",
+                JOptionPane.PLAIN_MESSAGE, null, gameNames, gameNames.length > 0 ? gameNames[0] : null);
+        if (gameName != null) {
+            for (Game game : library.getGameList()) {
+                if (game.getName().equalsIgnoreCase(gameName)) {
+                    JOptionPane.showMessageDialog(this,
+                            "Name: " + game.getName()
+                            + "\n" + " Price: " + game.getPrice() + "\n" + " Number of achievements: "
+                            + game.getNumAchievements() + "\n" + " Millions of players online: " + game.getPopularIndex());
+                }
+            }
+        }
+    }
+
+    // Helper method to display information of a game
+    // private void displayGame(Game game) {
+    //     JOptionPane.showMessageDialog(this,
+    //     "Name: " + game.getName()
+    //     + "\n" + " Price: " + game.getPrice() + "\n" + " Number of achievements: "
+    //     + game.getNumAchievements() + "\n" + " Millions of players online: " + game.getPopularIndex());
+    // }
 
     // Prompts user to save before quitting
     private void quitApplication() {
@@ -214,7 +269,8 @@ public class SteamAppGUI extends JFrame {
 
     // Load library option at startup
     private void loadLibraryOption() {
-        int option = JOptionPane.showConfirmDialog(this, "Load existing library?", "Load Library", JOptionPane.YES_NO_OPTION);
+        int option = JOptionPane.showConfirmDialog(
+                this,"Load existing library?", "Load Library", JOptionPane.YES_NO_OPTION);
         if (option == JOptionPane.YES_OPTION) {
             loadLibrary();
         }

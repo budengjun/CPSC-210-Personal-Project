@@ -1,1 +1,20 @@
-{"gameList": []}
+{"gameList": [
+    {
+        "price": 50,
+        "name": "Dead By Daylight",
+        "numAchievements": 55,
+        "popularIndex": 34.2
+    },
+    {
+        "price": 39.99,
+        "name": "Grand Theft Auto V",
+        "numAchievements": 77,
+        "popularIndex": 61.2
+    },
+    {
+        "price": 75,
+        "name": "Cyberpunk 2077",
+        "numAchievements": 57,
+        "popularIndex": 48.4
+    }
+]}
