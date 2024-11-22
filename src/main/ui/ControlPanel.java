@@ -87,7 +87,7 @@ public class ControlPanel extends JPanel {
     public void createQuitButton() {
         JButton quitButton = new JButton("Quit");
         quitButton.addActionListener(e -> quitApplication());
-        controlPanel.add(quitButton, BorderLayout.SOUTH);
+        controlPanel.add(quitButton);
     }
 
     // Adds a game to the library through a dialog
@@ -120,9 +120,9 @@ public class ControlPanel extends JPanel {
         Object[] message = {
                 "How many times you want to play?", selectTimesField,
         };
-        int option = JOptionPane.showConfirmDialog(controlPanel, message, "Play Game", JOptionPane.OK_CANCEL_OPTION);
-        if (option == JOptionPane.OK_OPTION) {
-            if (gameName != null) {
+        if (gameName != null) {
+            int option = JOptionPane.showConfirmDialog(controlPanel, message,"Play Game", JOptionPane.OK_CANCEL_OPTION);
+            if (option == JOptionPane.OK_OPTION) {
                 int timesToPlay = Integer.parseInt(selectTimesField.getText());
                 for (Game game : library.getGameList()) {
                     if (game.getName().equalsIgnoreCase(gameName)) {
@@ -186,9 +186,7 @@ public class ControlPanel extends JPanel {
             gamesName.add(game.getName());
         }
         JOptionPane.showMessageDialog(controlPanel, gamesName);
-        Object[] gameNames = library.getNameGameList().toArray();
-        String gameName = (String) JOptionPane.showInputDialog(controlPanel, "Select a game:", "View Game",
-                JOptionPane.PLAIN_MESSAGE, null, gameNames, gameNames.length > 0 ? gameNames[0] : null);
+        String gameName = selectGame();
         if (gameName != null) {
             for (Game game : library.getGameList()) {
                 if (game.getName().equalsIgnoreCase(gameName)) {
@@ -249,6 +247,11 @@ public class ControlPanel extends JPanel {
         Object[] gameNames = library.getNameGameList().toArray();
         return (String) JOptionPane.showInputDialog(controlPanel, "Select a game:", "Select Game",
                 JOptionPane.PLAIN_MESSAGE, null, gameNames, gameNames.length > 0 ? gameNames[0] : null);
+    }
+
+    // Main method to run the application
+    public static void main(String[] args) {
+        new SteamAppGUI();
     }
 
     public JPanel getControlPanel() {

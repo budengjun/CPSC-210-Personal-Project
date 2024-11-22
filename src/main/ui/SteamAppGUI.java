@@ -69,6 +69,7 @@ public class SteamAppGUI extends JFrame {
         }
     }
 
+    // Helper method to add an image to splash screen
     private JLabel addImage() {
         // Load the image
         ImageIcon splashImage = new ImageIcon("data/steamsplash1.jpg"); // Adjust path as needed

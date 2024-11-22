@@ -34,3 +34,23 @@ An example of text with **bold** and *italic* fonts.
 * As a user, when I select the quit option from the application menu, I want to be reminded to save my gamelist to file and have the option to do so or not
 
 * As a user, when I start the application, I want to be given the option to load my gamelist from file
+
+# Instruction for End User
+
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by clicking the "Add Game" button
+
+- You can generate the second required action related to the user story "adding multiple Xs to a Y" by clicking the "Remove Game" button
+
+- You can view the game list by clicking the "View Library" button
+
+- You can play the game by clicking the "Play Game" button
+
+- You can see how much your steam account worth by clicking the "Estimate Value" button
+
+- You can locate my visual component by running the application, a snow mountain image will pop up on the splash screen. And then a steam image will show up on the panel
+
+- You can save the state of my application by clicking the "Save Library" button
+
+- You can reload the state of my application by clicking the "Load Library" button
+
+- You can quit the application by clicking the "Quit" buttton
