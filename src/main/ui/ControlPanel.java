@@ -47,37 +47,37 @@ public class ControlPanel extends JPanel {
         // Add Game Button
         JButton addGameButton = new JButton("Add Game");
         addGameButton.addActionListener(e -> addGameDialog());
-        controlPanel.add(addGameButton, BorderLayout.SOUTH);
-
-        // View Games Button
-        JButton viewGamesButton = new JButton("View Library");
-        viewGamesButton.addActionListener(e -> viewGameListDisplay());
-        controlPanel.add(viewGamesButton, BorderLayout.SOUTH);
-
-        // Play Game Button
-        JButton playGameButton = new JButton("Play Game");
-        playGameButton.addActionListener(e -> playGameDialog());
-        controlPanel.add(playGameButton, BorderLayout.SOUTH);
+        controlPanel.add(addGameButton);
 
         // Remove Game Button
         JButton removeGameButton = new JButton("Remove Game");
         removeGameButton.addActionListener(e -> removeGameDialog());
-        controlPanel.add(removeGameButton, BorderLayout.SOUTH);
+        controlPanel.add(removeGameButton);
+
+        // Play Game Button
+        JButton playGameButton = new JButton("Play Game");
+        playGameButton.addActionListener(e -> playGameDialog());
+        controlPanel.add(playGameButton);
 
         // Estimate Steam Account Value Button
         JButton estimateValueButton = new JButton("Estimate Value");
         estimateValueButton.addActionListener(e -> estimateAccountValue());
-        controlPanel.add(estimateValueButton, BorderLayout.SOUTH);
+        controlPanel.add(estimateValueButton);
+
+        // View Games Button
+        JButton viewGamesButton = new JButton("View Library");
+        viewGamesButton.addActionListener(e -> viewGameListDisplay());
+        controlPanel.add(viewGamesButton);
 
         // Save Library Button
         JButton saveLibraryButton = new JButton("Save Library");
         saveLibraryButton.addActionListener(e -> saveLibrary());
-        controlPanel.add(saveLibraryButton, BorderLayout.SOUTH);
+        controlPanel.add(saveLibraryButton);
 
         // Load Library Button
         JButton loadLibraryButton = new JButton("Load Library");
         loadLibraryButton.addActionListener(e -> loadLibrary());
-        controlPanel.add(loadLibraryButton, BorderLayout.SOUTH);
+        controlPanel.add(loadLibraryButton);
 
         // Quit Button
         createQuitButton();
