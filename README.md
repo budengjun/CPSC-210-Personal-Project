@@ -72,3 +72,7 @@ Removed Cyberpunk 2077 from the game list.
 
 Thu Nov 28 12:17:00 PST 2024
 Played Dead By Daylight by 12 times.
+
+# Phase 4: Task 3
+
+- In the class "ControlPanel", I should refactor the method in "public void createControlPanel()" to subtitute duplicated codes in order to add one button. Moreover, it is a good choice to replace some similar methods in the class "SteamAppGUI", where there are some duplicated codes compiling to add panels like "controlPanel" and "gamePanel".
