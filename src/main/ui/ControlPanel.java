@@ -5,8 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import model.EventLog;
-import model.Event
-;
+import model.Event;
 import model.Game;
 import model.Library;
 import persistence.JsonReader;
