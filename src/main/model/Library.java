@@ -24,6 +24,7 @@ public class Library implements Writable {
     //EFFECTS: add a given game to gamelist
     public void addGame(Game game) {
         gameList.add(game);
+        EventLog.getInstance().logEvent(new Event("Added " + game.getName() + " to the game list."));
     }
 
     //REQUIRES: the given game is in gamelist
@@ -31,6 +32,7 @@ public class Library implements Writable {
     //EFFECTS: remove a given game from gamelist
     public void removeGame(Game game) {
         gameList.remove(game);
+        EventLog.getInstance().logEvent(new Event("Removed " + game.getName() + " from the game list."));
     }
 
     //EFFECTS: return gamelist
@@ -52,6 +54,7 @@ public class Library implements Writable {
     public void playGames(Game game, int n) {
         game.markAsPlayed();
         game.playGame(n);
+        EventLog.getInstance().logEvent(new Event("Played " + game.getName() + " by " + n + " times."));
     }
 
     @Override

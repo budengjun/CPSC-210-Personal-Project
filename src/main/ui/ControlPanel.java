@@ -4,6 +4,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import model.EventLog;
+import model.Event
+;
 import model.Game;
 import model.Library;
 import persistence.JsonReader;
@@ -207,6 +210,7 @@ public class ControlPanel extends JPanel {
         if (option == JOptionPane.YES_OPTION) {
             saveLibrary();
         }
+        printEventLog();
         System.exit(0);
     }
 
@@ -247,6 +251,14 @@ public class ControlPanel extends JPanel {
         Object[] gameNames = library.getNameGameList().toArray();
         return (String) JOptionPane.showInputDialog(controlPanel, "Select a game:", "Select Game",
                 JOptionPane.PLAIN_MESSAGE, null, gameNames, gameNames.length > 0 ? gameNames[0] : null);
+    }
+
+    // Prints all events in the EventLog
+    public void printEventLog() {
+        System.out.println("Event Log:");
+        for (Event event : EventLog.getInstance()) {
+            System.out.println(event.toString() + "\n");
+        }
     }
 
     // Main method to run the application

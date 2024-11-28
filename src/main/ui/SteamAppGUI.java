@@ -1,6 +1,10 @@
 package ui;
 
 import javax.swing.*;
+
+import model.EventLog;
+import model.Event;
+
 import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
@@ -110,4 +114,3 @@ public class SteamAppGUI extends JFrame {
         new SteamAppGUI();
     }
 }
-

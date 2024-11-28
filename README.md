@@ -53,4 +53,22 @@ An example of text with **bold** and *italic* fonts.
 
 - You can reload the state of my application by clicking the "Load Library" button
 
-- You can quit the application by clicking the "Quit" buttton
+- You can quit the application by clicking the "Quit" 
+
+# Phase 4: Task 2
+
+- Event Log:
+Thu Nov 28 12:16:46 PST 2024
+Added Dead By Daylight to the game list.
+
+Thu Nov 28 12:16:46 PST 2024
+Added Grand Theft Auto V to the game list.
+
+Thu Nov 28 12:16:46 PST 2024
+Added Cyberpunk 2077 to the game list.
+
+Thu Nov 28 12:16:49 PST 2024
+Removed Cyberpunk 2077 from the game list.
+
+Thu Nov 28 12:17:00 PST 2024
+Played Dead By Daylight by 12 times.
